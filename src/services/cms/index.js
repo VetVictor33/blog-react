@@ -1,5 +1,5 @@
 export const CHRONICLES_QUERY = `query Chronicles($limit: IntType) {
-    allStories(first: $limit) {
+    allChronicles(first: $limit) {
       id
       title
       originalPublishingDate

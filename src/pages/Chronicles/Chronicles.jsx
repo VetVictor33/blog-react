@@ -1,24 +1,38 @@
 import { useQuery } from "graphql-hooks";
-import { CHRONICLES_QUERY, STORIES_QUERY } from "../../services/cms"
+import { useState } from "react";
 import ChroniclePreview from "../../components/ChroniclePreview/ChroniclePreview";
+import Content from '../../components/Content/Content';
+import { CHRONICLES_QUERY } from "../../services/cms";
+import './Chronicles.css';
 
 export default function Chronicles() {
-    const { loading, error, data } = useQuery(STORIES_QUERY, {
+    const [currentContent, setCurrentContent] = useState(null);
+    const { loading, error, data } = useQuery(CHRONICLES_QUERY, {
         variables: {
             limit: 10
         }
     });
     if (loading) return "Loading...";
     if (error) return "Something Bad Happened";
-
-    console.log(data)
     return (
         <div className="Chronicles">
-            {data.allStories.map(story => {
-                return (
-                    <ChroniclePreview key={story.id} title={story.title} date={story.originalPublishingDate} preview={story.preview} />
-                )
-            })}
+            <div className="chronicles-wrapper">
+                {data.allChronicles.map(story => {
+                    return (
+                        <>
+                            <ChroniclePreview key={story.id}
+                                title={story.title}
+                                date={story.originalPublishingDate}
+                                preview={story.preview}
+                                content={story.content}
+                                currentContent={currentContent}
+                                setCurrentContent={setCurrentContent}
+                            />
+                        </>
+                    )
+                })}
+            </div>
+            {!!currentContent && <Content currentContent={currentContent} />}
         </div>
     )
 }
