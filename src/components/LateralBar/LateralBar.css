@@ -1,0 +1,8 @@
+.LateralBar nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.LateralBar a.active {
+    text-decoration: underline;
+}

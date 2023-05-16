@@ -1,34 +1,13 @@
-import { useQuery } from 'graphql-hooks';
-import './App.css'
-import { StructuredText } from 'react-datocms/structured-text';
-
-const HOMEPAGE_QUERY = `query Article($limit: IntType) {
-  allStories(first: $limit) {
-    id
-    title
-    preview
-  }
-}`;
+import { Outlet } from 'react-router';
+import './App.css';
+import LateralBar from './components/LateralBar/LateralBar';
 
 function App() {
-  const { loading, error, data } = useQuery(HOMEPAGE_QUERY, {
-    variables: {
-      limit: 10
-    }
-  });
-
-  if (loading) return "Loading...";
-  if (error) return "Something Bad Happened";
-
   return (
     <>
       <div className="App">
-        {data.allStories.map(article => (
-          <article>
-            <h6>{article.title}</h6>
-            <p>{article.preview}</p>
-          </article>
-        ))}
+        <LateralBar />
+        <Outlet />
       </div>
     </>
   )
