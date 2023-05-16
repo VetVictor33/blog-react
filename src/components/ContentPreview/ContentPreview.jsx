@@ -1,8 +1,8 @@
-import './ChroniclePreview.css';
+import './ContentPreview.css';
 
-export default function ChroniclePreview({ title, date, preview, content, currentContent, setCurrentContent }) {
+export default function ContentPreview({ title, date, preview, content, currentContent, setCurrentContent }) {
     return (
-        <div className="ChroniclePreview"
+        <div className="ContentPreview"
             onClick={() => setCurrentContent((currentContent && currentContent.title) === title ? null : { title, content })}
         >
             <p>{title}</p>

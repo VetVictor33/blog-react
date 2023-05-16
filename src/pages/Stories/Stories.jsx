@@ -1,5 +1,5 @@
 import { useQuery } from "graphql-hooks";
-import StoryPreview from "../../components/StoryPreview/StoryPreview"
+import ContentPreview from "../../components/ContentPreview/ContentPreview"
 import { STORIES_QUERY } from "../../services/cms";
 import { useState } from "react";
 import Content from "../../components/Content/Content";
@@ -14,11 +14,11 @@ export default function Stories() {
     if (loading) return "Loading...";
     if (error) return "Something Bad Happened";
     return (
-        <div className="Stories">
+        <main className="Stories">
             <>
                 {data.allStories.map(story => {
                     return (
-                        <StoryPreview key={story.id}
+                        <ContentPreview key={story.id}
                             title={story.title}
                             date={story.originalPublishingDate}
                             preview={story.preview}
@@ -31,6 +31,6 @@ export default function Stories() {
                 {!!currentContent && <Content currentContent={currentContent} />}
 
             </>
-        </div>
+        </main>
     )
 }

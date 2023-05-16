@@ -19,7 +19,7 @@ const client = new GraphQLClient({
 const router = createBrowserRouter([
   {
     element: <App />,
-    errorElement: <h1>Deu ruim</h1>,
+    errorElement: <h1>Aconteceu algo de errado</h1>,
     children: [
       {
         path: "/",

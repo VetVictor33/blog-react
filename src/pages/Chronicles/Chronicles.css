@@ -1,3 +1,22 @@
-.Chronicles .chronicles-wrapper {
-    display: flex;
+.Chronicles {
+    padding: 0 30px;
 }
+
+.Chronicles .carrousel-wrapper {
+    display: grid;
+    grid-template-columns: repeat(100, 33%);
+    margin: 0 auto;
+    gap: 0.3%;
+    transition: 0.3s;
+}
+
+.Chronicles .carrousel-wrapper:hover {
+    transform: translateX(-33%);
+}
+
+.Chronicles .carrousel {
+    width: 99%;
+    overflow: hidden;
+}
+
+.Chronicles .ContentPreview {}

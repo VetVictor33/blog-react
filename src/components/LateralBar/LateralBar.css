@@ -1,6 +1,22 @@
+.LateralBar {
+    width: 20vw;
+    height: 100vh;
+    border-right: 1px white solid;
+    position: sticky;
+    top: 0;
+
+    padding-top: 50px;
+
+}
+
 .LateralBar nav {
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+
+.LateralBar a {
+    font-size: 24px;
 }
 
 .LateralBar a.active {
