@@ -1,5 +1,6 @@
 import { useQuery } from "graphql-hooks";
 import { CHRONICLES_QUERY, STORIES_QUERY } from "../../services/cms"
+import ChroniclePreview from "../../components/ChroniclePreview/ChroniclePreview";
 
 export default function Chronicles() {
     const { loading, error, data } = useQuery(STORIES_QUERY, {
@@ -13,7 +14,11 @@ export default function Chronicles() {
     console.log(data)
     return (
         <div className="Chronicles">
-            <p>Hello Chronicles</p>
+            {data.allStories.map(story => {
+                return (
+                    <ChroniclePreview key={story.id} title={story.title} date={story.originalPublishingDate} preview={story.preview} />
+                )
+            })}
         </div>
     )
 }
