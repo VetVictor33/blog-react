@@ -28,6 +28,8 @@ export default function Chronicles() {
         }
     }
 
+    const needCarrousel = allChronicles.length > 3 ? true : false
+
     return (
         <main className="Chronicles">
             <div className="chronicles-wrapper">
@@ -35,21 +37,18 @@ export default function Chronicles() {
                     <div className="carrousel-wrapper"
                         style={{ transform: `translateX(${activeIndex * 33}%)` }}
                     >
-                        {allChronicles.map(story => {
+                        {allChronicles.map(data => {
                             return (
-                                <ContentPreview key={story.id}
-                                    title={story.title}
-                                    date={story.originalPublishingDate}
-                                    preview={story.preview}
-                                    content={story.content}
+                                <ContentPreview key={data.id}
+                                    data={data}
                                     currentContent={currentContent}
                                     setCurrentContent={setCurrentContent}
                                 />
                             )
                         })}
                     </div>
-                    <button onClick={() => { newPage('+') }} >{'<'}</button>
-                    <button onClick={() => { newPage('-') }} >{'>'}</button>
+                    {needCarrousel && <> <button onClick={() => { newPage('+') }} >{'<'}</button>
+                        <button onClick={() => { newPage('-') }} >{'>'}</button></>}
                 </div>
             </div>
             {!!currentContent && <Content currentContent={currentContent} />}
